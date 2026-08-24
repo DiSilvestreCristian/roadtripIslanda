@@ -1,9 +1,0 @@
-[
-  { "giorno": 1, "nome": "Reykjavík", "lat": 64.1466, "lng": -21.9426, "note": "Arrivo e pernottamento in città" },
-  { "giorno": 2, "nome": "Vík í Mýrdal", "lat": 63.4181, "lng": -19.0060, "note": "Cascate Seljalandsfoss e Skógafoss lungo il percorso" },
-  { "giorno": 3, "nome": "Höfn", "lat": 64.2539, "lng": -15.2082, "note": "Jökulsárlón e Diamond Beach" },
-  { "giorno": 4, "nome": "Egilsstaðir", "lat": 65.2833, "lng": -14.4000, "note": "Attraversamento East Fjords" },
-  { "giorno": 5, "nome": "Mývatn", "lat": 65.6013, "lng": -16.9967, "note": "Area geotermica e crateri" },
-  { "giorno": 6, "nome": "Akureyri", "lat": 65.6885, "lng": -18.1262, "note": "Capitale del nord" },
-  { "giorno": 7, "nome": "Reykjavík", "lat": 64.1466, "lng": -21.9426, "note": "Rientro chiudendo l'anello" }
-]
