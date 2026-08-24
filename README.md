@@ -1,24 +1,16 @@
-# Modifiche applicate
+# Roadtrip Islanda
 
-## 1. Numerazione marker
-I marker delle tappe sono numerati usando il campo `tappa` di `data/tappe.json`, non più usando `giorno`.
+Web app interattiva per visualizzare un itinerario di viaggio in Islanda tramite una mappa Leaflet.
 
-Esempio: le tappe 3, 4, 5 e 6 dello stesso giorno mostrano rispettivamente 3, 4, 5 e 6.
+## Funzionalità
+Visualizzazione delle tappe e del percorso stradale.
 
-## 2. Rimozione della spezzata Ring Road
-È stata rimossa la `L.polyline(RING_ROAD_COORDS, ...)` presente in `js/app.js` e sono state eliminate le coordinate statiche `RING_ROAD_COORDS` da `js/config.js`.
+Layer dedicati a hotel, supermercati e benzinai.
 
-La Ring Road non viene quindi più disegnata artificialmente sopra la mappa.
+Clustering separato per supermercati e benzinai.
 
-## 3. Percorso stradale reale tra le tappe
-Il collegamento tra le tappe usa OSRM (OpenStreetMap Routing Machine):
+Integrazione tra hotel e tappe quando si trovano nella stessa posizione.
 
-- le coordinate vengono ordinate per `tappa`;
-- vengono inviate a `https://router.project-osrm.org/route/v1/driving/...`;
-- OSRM restituisce una geometria `GeoJSON` del percorso stradale;
-- Leaflet la visualizza con `L.geoJSON()`.
+Percorso stradale calcolato tramite OSRM.
 
-Questa implementazione segue l'idea del README relativa alla sostituzione delle linee geometriche con un vero servizio/dato di routing.
-
-### Nota
-Il progetto ora dipende dal servizio pubblico OSRM per calcolare il percorso quando la pagina viene aperta. Se in futuro vuoi una versione completamente indipendente da servizi esterni, il passo successivo sarebbe generare e distribuire una geometria stradale locale oppure ospitare un motore di routing dedicato.
+I dati dell'itinerario sono contenuti nella cartella data/ e possono essere modificati senza intervenire sulla logica dell'applicazione.
