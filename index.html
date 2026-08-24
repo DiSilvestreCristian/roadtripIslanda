@@ -4,40 +4,32 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Road Trip Islanda</title>
-
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
 <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-
 <div id="app">
   <aside id="sidebar">
     <h1>🚗 Road Trip Islanda</h1>
-
     <section class="panel">
-      <h2>Giorni</h2>
-      <div id="days-list" class="checkbox-list">
-        <!-- popolato via JS -->
-      </div>
+      <h2>Itinerario</h2>
+      <div id="days-list" class="checkbox-list"></div>
     </section>
-
     <section class="panel">
       <h2>Punti di interesse</h2>
-      <div id="poi-list" class="checkbox-list">
-        <!-- popolato via JS -->
-      </div>
+      <div id="poi-list" class="checkbox-list"></div>
     </section>
-
     <section class="panel" id="details-panel">
       <h2>Dettagli</h2>
       <p id="details-content" class="muted">Clicca un marker o una tappa per vedere i dettagli qui.</p>
     </section>
   </aside>
-
   <main id="map"></main>
 </div>
-
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 <script src="js/config.js"></script>
 <script src="js/app.js"></script>
 </body>
