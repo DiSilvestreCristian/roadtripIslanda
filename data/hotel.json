@@ -5,8 +5,8 @@
   { "tappa": 4, "giorno": 4, "nome": "Skaftafell Lodges by Adventure Hotels", "lat": 64.0159, "lng": -16.9753, "indirizzo": "Skaftafell", "note": "Notte 4" },
   { "tappa": 5, "giorno": 5, "nome": "Hotel Valaskjálf", "lat": 65.2631, "lng": -14.4053, "indirizzo": "Lagarás 17-19, 700 Egilsstaðir", "note": "Notte 5 e 6" },
   { "tappa": 6, "giorno": 6, "nome": "Hotel Valaskjálf", "lat": 65.2631, "lng": -14.4053, "indirizzo": "Lagarás 17-19, 700 Egilsstaðir", "note": "Notte 5 e 6" },
-  { "tappa": 7, "giorno": 7, "nome": "Fosshótel Húsavík", "lat": 66.0449, "lng": -17.3389, "indirizzo": "Ketilsbraut 22, 640 Húsavík", "note": "Notte 7" },
-  { "tappa": 8, "giorno": 8, "nome": "Fosshótel Húsavík", "lat": 66.0449, "lng": -17.3389, "indirizzo": "Ketilsbraut 22, 640 Húsavík", "note": "Notte 8" },
+  { "tappa": 7, "giorno": 7, "nome": "Fosshótel Húsavík", "lat": 66.0449, "lng": -17.3389, "indirizzo": "Ketilsbraut 22, 640 Húsavík", "note": "Notte 7 e 8" },
+  { "tappa": 8, "giorno": 8, "nome": "Fosshótel Húsavík", "lat": 66.0449, "lng": -17.3389, "indirizzo": "Ketilsbraut 22, 640 Húsavík", "note": "Notte 7 e 8" },
   { "tappa": 9, "giorno": 9, "nome": "Fjós Guesthouse", "lat": 65.5538, "lng": -19.4447, "indirizzo": "Varmahlíð", "note": "Notte 9" },
   { "tappa": 10, "giorno": 10, "nome": "Guesthouse Hof", "lat": 64.8211, "lng": -23.8214, "indirizzo": "Hof, Penisola di Snæfellsnes", "note": "Notte 10" },
   { "tappa": 11, "giorno": 11, "nome": "Konvin Hotel by Reykjavik Keflavik Airport", "lat": 63.9978, "lng": -22.5606, "indirizzo": "Aðalgata 60, 235 Reykjanesbær", "note": "Notte 11" }
