@@ -4,8 +4,8 @@
   { "tappa": 3, "giorno": 3, "nome": "Hotel Skálholt", "lat": 64.1167, "lng": -20.5333, "indirizzo": "Skálholt, 804 Selfoss", "note": "Notte 3: 14 su 15" },
   { "tappa": 4, "giorno": 4, "nome": "Skaftafell Lodges by Adventure Hotels", "lat": 64.0159, "lng": -16.9753, "indirizzo": "Skaftafell", "note": "Notte 4: 15 su 16" },
   { "tappa": 5, "giorno": 5, "nome": "Hotel Valaskjálf", "lat": 65.2631, "lng": -14.4053, "indirizzo": "Lagarás 17-19, 700 Egilsstaðir", "note": "Notte 5: 16 su 17 - Notte 6: 17 su 18" },
-  { "tappa": 6, "giorno": 7, "nome": "Fosshótel Húsavík", "lat": 66.0449, "lng": -17.3389, "indirizzo": "Ketilsbraut 22, 640 Húsavík", "note": "Notte 7: 18 su 19 - Notte 8: 19 su 20" },
-  { "tappa": 7, "giorno": 9, "nome": "Fjós Guesthouse", "lat": 65.5538, "lng": -19.4447, "indirizzo": "Varmahlíð", "note": "Notte 9: 20 su 21" },
-  { "tappa": 8, "giorno": 10, "nome": "Guesthouse Hof", "lat": 64.8211, "lng": -23.8214, "indirizzo": "Hof, Penisola di Snæfellsnes", "note": "Notte 10: 21 su 22" },
-  { "tappa": 9, "giorno": 11, "nome": "Konvin Hotel by Reykjavik Keflavik Airport", "lat": 63.9978, "lng": -22.5606, "indirizzo": "Aðalgata 60, 235 Reykjanesbær", "note": "Notte 11: 22 su 23" }
+  { "tappa": 6, "giorno": 6, "nome": "Fosshótel Húsavík", "lat": 66.0449, "lng": -17.3389, "indirizzo": "Ketilsbraut 22, 640 Húsavík", "note": "Notte 7: 18 su 19 - Notte 8: 19 su 20" },
+  { "tappa": 7, "giorno": 7, "nome": "Fjós Guesthouse", "lat": 65.5538, "lng": -19.4447, "indirizzo": "Varmahlíð", "note": "Notte 9: 20 su 21" },
+  { "tappa": 8, "giorno": 8, "nome": "Guesthouse Hof", "lat": 64.8211, "lng": -23.8214, "indirizzo": "Hof, Penisola di Snæfellsnes", "note": "Notte 10: 21 su 22" },
+  { "tappa": 9, "giorno": 9, "nome": "Konvin Hotel by Reykjavik Keflavik Airport", "lat": 63.9978, "lng": -22.5606, "indirizzo": "Aðalgata 60, 235 Reykjanesbær", "note": "Notte 11: 22 su 23" }
 ]
