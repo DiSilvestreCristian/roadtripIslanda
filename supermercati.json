@@ -1,8 +1,0 @@
-[
-  { "nome": "Bónus Reykjavík", "lat": 64.1450, "lng": -21.9270, "note": "Il piu' economico, buono per la spesa iniziale" },
-  { "nome": "Krónan Selfoss", "lat": 63.9330, "lng": -20.9950, "note": "" },
-  { "nome": "Nettó Vík", "lat": 63.4188, "lng": -19.0040, "note": "" },
-  { "nome": "Kjörbúðin Höfn", "lat": 64.2515, "lng": -15.2095, "note": "" },
-  { "nome": "Bónus Egilsstaðir", "lat": 65.2820, "lng": -14.4020, "note": "" },
-  { "nome": "Bónus Akureyri", "lat": 65.6858, "lng": -18.0980, "note": "" }
-]
