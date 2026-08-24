@@ -56,13 +56,15 @@ function makeTappaIcon(tappa, hotelMatch) {
 function updateHotelAndTappaState() {
   const hotelLayer = poiLayers.hotel;
   const hotelLayerActive = hotelPoints.length > 0 && !!hotelLayer && map.hasLayer(hotelLayer);
+  const tappeLayerActive = map.hasLayer(tappeLayer);
+  const hotelAndTappeActive = hotelLayerActive && tappeLayerActive;
 
   // Se Hotel e Tappe sono entrambi attivi, nascondi solo gli hotel
   // che coincidono con una tappa: la posizione viene rappresentata
   // dal marker della tappa, che diventa blu.
   hotelMarkers.forEach(({ marker, point }) => {
     const matches = tappeData.some((tappa) => haversineMeters(point, tappa) <= HOTEL_MATCH_DISTANCE_METERS);
-    if (hotelLayerActive && matches) {
+    if (hotelAndTappeActive && matches) {
       if (hotelLayer.hasLayer(marker)) hotelLayer.removeLayer(marker);
     } else if (hotelLayerActive) {
       if (!hotelLayer.hasLayer(marker)) hotelLayer.addLayer(marker);
@@ -70,7 +72,7 @@ function updateHotelAndTappaState() {
   });
 
   tappeMarkers.forEach(({ marker, tappa }) => {
-    const matched = hotelLayerActive && hotelMatchesTappa(tappa);
+    const matched = hotelAndTappeActive && hotelMatchesTappa(tappa);
     marker.setIcon(makeTappaIcon(tappa, matched));
   });
 }
@@ -144,6 +146,7 @@ function loadTappe() {
           map.removeLayer(tappeLayer);
           if (itineraryLine) map.removeLayer(itineraryLine);
         }
+        updateHotelAndTappaState();
       });
 
       addRoutingLine(tappeData);

@@ -11,5 +11,5 @@ const MAP_INITIAL_CENTER = [64.9, -18.5];
 const MAP_INITIAL_ZOOM = 6;
 const ROUTING_SOURCE = {
   baseUrl: "https://router.project-osrm.org/route/v1/driving",
-  color: "#f1f5f9"
+  color: "#ff5e7d"
 };
