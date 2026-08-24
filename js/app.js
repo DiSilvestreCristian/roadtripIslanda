@@ -9,15 +9,6 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 }).addTo(map);
 
-// ---- Ring Road ----
-L.polyline(RING_ROAD_COORDS, {
-  color: "#ffffff",
-  weight: 4,
-  opacity: 0.85,
-  dashArray: "1,8",
-  lineCap: "round",
-}).addTo(map);
-
 const detailsContent = document.getElementById("details-content");
 
 function showDetails(html) {
@@ -34,9 +25,52 @@ const dayLayers = {};   // giorno -> L.LayerGroup
 const poiLayers = {};   // sourceId -> L.LayerGroup
 
 // ============================================================
-// TAPPE (viaggio diviso per giorni)
+// PERCORSO STRADALE
 // ============================================================
+// OSRM riceve le coordinate nell'ordine delle tappe e restituisce
+// la geometria reale delle strade percorse tra un waypoint e l'altro.
+function loadRoadRoute(tappe) {
+  if (tappe.length < 2) return Promise.resolve(null);
 
+  const coordinates = tappe
+    .map((t) => `${t.lng},${t.lat}`)
+    .join(";");
+
+  const url = `${ROUTING_API}/route/v1/driving/${coordinates}?overview=full&geometries=geojson&alternatives=false`;
+
+  return fetch(url)
+    .then((r) => {
+      if (!r.ok) throw new Error(`Routing HTTP ${r.status}`);
+      return r.json();
+    })
+    .then((data) => {
+      if (data.code !== "Ok" || !data.routes?.length) {
+        throw new Error(data.message || data.code || "Percorso non disponibile");
+      }
+
+      const route = L.geoJSON(data.routes[0].geometry, {
+        style: {
+          color: TAPPE_SOURCE.color,
+          weight: 4,
+          opacity: 0.9,
+          lineCap: "round",
+          lineJoin: "round",
+        },
+      });
+
+      route.addTo(map);
+      return route;
+    })
+    .catch((err) => {
+      console.error("Errore caricando il percorso stradale:", err);
+      showDetails(`<span style="color:#ff8080">Impossibile caricare il percorso stradale: ${err.message}</span>`);
+      return null;
+    });
+}
+
+// ============================================================
+// TAPPE
+// ============================================================
 function loadTappe() {
   return fetch(TAPPE_SOURCE.file)
     .then((r) => {
@@ -44,35 +78,33 @@ function loadTappe() {
       return r.json();
     })
     .then((tappe) => {
-      // Ordina per giorno per un tooltip/numerazione coerente
-      tappe.sort((a, b) => a.giorno - b.giorno);
+      // Ordine e numerazione del viaggio basati sul campo "tappa".
+      tappe.sort((a, b) => a.tappa - b.tappa);
 
-      // Linea che collega le tappe nell'ordine di viaggio (giorno 1 -> ultimo)
-      const itineraryLine = L.polyline(
-        tappe.map((t) => [t.lat, t.lng]),
-        { color: TAPPE_SOURCE.color, weight: 3, opacity: 0.9 }
-      );
-      itineraryLine.addTo(map);
+      // Disegna il percorso sulle strade reali nell'ordine delle tappe.
+      loadRoadRoute(tappe);
 
       tappe.forEach((tappa) => {
         const giorno = tappa.giorno;
+        const numeroTappa = tappa.tappa;
+
         if (!dayLayers[giorno]) dayLayers[giorno] = L.layerGroup();
 
-        // Marker = badge numerato con il giorno, cliccabile
+        // Marker = badge numerato con la tappa, cliccabile.
         const marker = L.marker([tappa.lat, tappa.lng], {
           icon: L.divIcon({
             className: "stop-number",
-            html: `<div class="badge">${giorno}</div>`,
+            html: `<div class="badge">${numeroTappa}</div>`,
             iconSize: [26, 26],
             iconAnchor: [13, 13],
           }),
         });
 
-        marker.bindTooltip(`${giorno}. ${tappa.nome}`, { direction: "top" });
-
+        marker.bindTooltip(`${numeroTappa}. ${tappa.nome}`, { direction: "top" });
         marker.on("click", () => {
           showDetails(`
-            <b>Giorno ${giorno} — ${tappa.nome}</b>
+            <b>Tappa ${numeroTappa} — ${tappa.nome}</b>
+            ${fieldRow("Giorno", giorno)}
             ${fieldRow("Coordinate", `${tappa.lat.toFixed(4)}, ${tappa.lng.toFixed(4)}`)}
             ${fieldRow("Note", tappa.note)}
           `);
@@ -84,9 +116,10 @@ function loadTappe() {
       buildDaysSidebar(Object.keys(dayLayers).map(Number).sort((a, b) => a - b));
       Object.values(dayLayers).forEach((layer) => layer.addTo(map));
 
-      // Adatta la vista iniziale a tutte le tappe
+      // Adatta la vista iniziale a tutte le tappe.
       if (tappe.length) {
-        map.fitBounds(itineraryLine.getBounds(), { padding: [40, 40] });
+        const bounds = L.latLngBounds(tappe.map((t) => [t.lat, t.lng]));
+        map.fitBounds(bounds, { padding: [40, 40] });
       }
     })
     .catch((err) => {
@@ -98,7 +131,6 @@ function loadTappe() {
 function buildDaysSidebar(giorni) {
   const container = document.getElementById("days-list");
   container.innerHTML = "";
-
   giorni.forEach((giorno) => {
     const row = document.createElement("label");
     row.className = "checkbox-item";
@@ -128,7 +160,6 @@ function loadPoiSource(source) {
     })
     .then((points) => {
       const layer = L.layerGroup();
-
       points.forEach((p) => {
         const marker = L.circleMarker([p.lat, p.lng], {
           radius: 6,
@@ -139,7 +170,6 @@ function loadPoiSource(source) {
         });
 
         marker.bindTooltip(p.nome, { direction: "top" });
-
         marker.on("click", () => {
           showDetails(`
             <b>${p.nome}</b>
@@ -155,7 +185,6 @@ function loadPoiSource(source) {
 
       poiLayers[source.id] = layer;
       layer.addTo(map);
-
       return points.length;
     })
     .catch((err) => {
@@ -167,7 +196,6 @@ function loadPoiSource(source) {
 function buildPoiSidebar(counts) {
   const container = document.getElementById("poi-list");
   container.innerHTML = "";
-
   POI_SOURCES.forEach((source) => {
     const row = document.createElement("label");
     row.className = "checkbox-item";
