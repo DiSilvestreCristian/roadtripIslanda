@@ -1,0 +1,8 @@
+[
+  { "nome": "Center Hotels Plaza", "lat": 64.1477, "lng": -21.9397, "indirizzo": "Reykjavík", "note": "Notte 1 e 7" },
+  { "nome": "Puffin Hotel Vík", "lat": 63.4183, "lng": -19.0058, "indirizzo": "Vík í Mýrdal", "note": "Notte 2" },
+  { "nome": "Milk Factory Guesthouse", "lat": 64.2531, "lng": -15.2109, "indirizzo": "Höfn", "note": "Notte 3" },
+  { "nome": "Hotel Egilsstaðir", "lat": 65.2811, "lng": -14.3958, "indirizzo": "Egilsstaðir", "note": "Notte 4" },
+  { "nome": "Fosshótel Mývatn", "lat": 65.6339, "lng": -16.9930, "indirizzo": "Mývatn", "note": "Notte 5" },
+  { "nome": "Hotel Kea Akureyri", "lat": 65.6844, "lng": -18.0958, "indirizzo": "Akureyri", "note": "Notte 6" }
+]
