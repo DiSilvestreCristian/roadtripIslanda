@@ -11,8 +11,13 @@
 </head>
 <body>
 <div id="app">
+  <button id="sidebar-toggle" class="hamburger-btn" aria-label="Apri menu" title="Apri menu">☰</button>
+  <div id="sidebar-overlay"></div>
   <aside id="sidebar">
-    <h1>🚗 Road Trip Islanda</h1>
+    <div class="sidebar-header">
+      <h1>🚗 Road Trip Islanda</h1>
+      <button id="sidebar-close" class="icon-btn" aria-label="Chiudi menu" title="Chiudi menu">✕</button>
+    </div>
     <section class="panel">
       <h2>Itinerario</h2>
       <div id="days-list" class="checkbox-list"></div>
