@@ -1,10 +1,604 @@
 [
-  { "nome": "N1 Reykjavík", "lat": 64.1372, "lng": -21.9033, "note": "Ultimo rifornimento prima di partire" },
-  { "nome": "Orkan Selfoss", "lat": 63.9312, "lng": -20.9917, "note": "" },
-  { "nome": "N1 Vík", "lat": 63.4190, "lng": -19.0065, "note": "" },
-  { "nome": "Orkan Kirkjubæjarklaustur", "lat": 63.7912, "lng": -18.0530, "note": "Distributore isolato, consigliato fare il pieno" },
-  { "nome": "N1 Höfn", "lat": 64.2508, "lng": -15.2100, "note": "" },
-  { "nome": "N1 Egilsstaðir", "lat": 65.2833, "lng": -14.3958, "note": "" },
-  { "nome": "Orkan Mývatn (Reykjahlíð)", "lat": 65.6420, "lng": -16.9130, "note": "" },
-  { "nome": "N1 Akureyri", "lat": 65.6835, "lng": -18.0968, "note": "" }
+  {
+    "nome": "N1 Akranes",
+    "lat": 64.317,
+    "lng": -22.073,
+    "indirizzo": "Þjóðbraut 9, Akranes",
+    "note": "Servizio con personale · 08:00-22:00"
+  },
+  {
+    "nome": "N1 Árnesi",
+    "lat": 63.93,
+    "lng": -21.01,
+    "indirizzo": "Árnesi, Selfoss",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Ártúnshöfði",
+    "lat": 64.13,
+    "lng": -21.828,
+    "indirizzo": "Straumur 9, Reykjavík",
+    "note": "Servizio con personale · 24/7"
+  },
+  {
+    "nome": "N1 Ásbyrgi",
+    "lat": 66.003,
+    "lng": -16.505,
+    "indirizzo": "Ásbyrgi, Kópasker",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Ásvellir",
+    "lat": 64.045,
+    "lng": -21.945,
+    "indirizzo": "Ásvellir 1, Hafnarfjörður",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Bakkafjörður",
+    "lat": 66.033,
+    "lng": -14.817,
+    "indirizzo": "Hafnargata 4, Bakkafjörður",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Bíldshöfða",
+    "lat": 64.128,
+    "lng": -21.842,
+    "indirizzo": "Bíldshöfða 2, Reykjavík",
+    "note": "Servizio con personale · 06:30-22:00 (officina meccanica allo stesso indirizzo, 08:00-17:00)"
+  },
+  {
+    "nome": "N1 Bjarkarlundur",
+    "lat": 65.467,
+    "lng": -22.067,
+    "indirizzo": "Bjarkarlundur, Reykhólahreppur",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Blönduós",
+    "lat": 65.66,
+    "lng": -20.3,
+    "indirizzo": "Norðurlandsvegur 3, Blönduós",
+    "note": "Servizio con personale · 07:30-22:00"
+  },
+  {
+    "nome": "N1 Borgarfjörður Eystri",
+    "lat": 65.525,
+    "lng": -13.808,
+    "indirizzo": "Bakkaeyri, Borgarfjörður Eystri",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Borgarnes",
+    "lat": 64.539,
+    "lng": -21.919,
+    "indirizzo": "Brúartorg 1, Borgarnes",
+    "note": "Servizio con personale · 08:00-22:00"
+  },
+  {
+    "nome": "N1 Borgartún",
+    "lat": 64.147,
+    "lng": -21.905,
+    "indirizzo": "Borgartún 39, Reykjavík",
+    "note": "Servizio con personale · 07:30-19:30"
+  },
+  {
+    "nome": "N1 Brautarhóli",
+    "lat": 63.928,
+    "lng": -20.985,
+    "indirizzo": "Brautarhóli, Selfoss",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Breiðdalsvík",
+    "lat": 64.797,
+    "lng": -14.019,
+    "indirizzo": "Ásvegur 18, Breiðdalsvík",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Búðardalur",
+    "lat": 65.099,
+    "lng": -21.774,
+    "indirizzo": "Vesturbraut 10, Búðardalur",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Dalvík",
+    "lat": 65.967,
+    "lng": -18.533,
+    "indirizzo": "Hafnarbraut 22, Dalvík",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Djúpivogur",
+    "lat": 64.654,
+    "lng": -14.278,
+    "indirizzo": "Búland 1, Djúpivogur",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Drangsnes",
+    "lat": 65.697,
+    "lng": -21.43,
+    "indirizzo": "Borgargata 2, Drangsnes",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Egilsstaðir",
+    "lat": 65.283,
+    "lng": -14.396,
+    "indirizzo": "Kaupvangur 4, Egilsstaðir",
+    "note": "Servizio con personale · 08:00-22:00"
+  },
+  {
+    "nome": "N1 Elínarvegur",
+    "lat": 64.32,
+    "lng": -22.06,
+    "indirizzo": "Elínarvegur 3, Akranes",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Eskifjörður",
+    "lat": 65.073,
+    "lng": -13.97,
+    "indirizzo": "Dalbraut 3d, Eskifjörður",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Fagurhólsmýri",
+    "lat": 63.877,
+    "lng": -16.635,
+    "indirizzo": "Fagurhólsmýri, Öræfum",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Fáskrúðsfjörður",
+    "lat": 64.933,
+    "lng": -13.968,
+    "indirizzo": "Fáskrúðsfjörður",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Fiskislóð",
+    "lat": 64.156,
+    "lng": -21.949,
+    "indirizzo": "Fiskislóð 15-21, Reykjavík",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Flateyri",
+    "lat": 65.999,
+    "lng": -23.523,
+    "indirizzo": "Hafnarstræti 1, Flateyri",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Flókalundur",
+    "lat": 65.552,
+    "lng": -23.386,
+    "indirizzo": "Flókalundur, Patreksfirði",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Flugvellir",
+    "lat": 63.975,
+    "lng": -22.61,
+    "indirizzo": "Flugvellir 27, Reykjanesbæ",
+    "note": "Self-service · 24/7 (negozio e officina allo stesso indirizzo, officina 08:00-17:00)"
+  },
+  {
+    "nome": "N1 Flúðir",
+    "lat": 64.138,
+    "lng": -20.31,
+    "indirizzo": "Grund, Flúðir",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Fosshóll",
+    "lat": 65.583,
+    "lng": -17.417,
+    "indirizzo": "Fosshóll, Húsavík",
+    "note": "Self-service · 24/7 — vicino alla cascata Goðafoss, indirizzo postale via Húsavík"
+  },
+  {
+    "nome": "N1 Fossvogur",
+    "lat": 64.115,
+    "lng": -21.89,
+    "indirizzo": "Kringlumýrarbraut 100, Reykjavík",
+    "note": "Servizio con personale · 07:00-22:00"
+  },
+  {
+    "nome": "N1 Gagnvegur",
+    "lat": 64.126,
+    "lng": -21.771,
+    "indirizzo": "Gagnvegi 2, Reykjavík",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Garður",
+    "lat": 64.051,
+    "lng": -22.705,
+    "indirizzo": "Heiðartún 1, Garður",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Geysir",
+    "lat": 64.31,
+    "lng": -20.302,
+    "indirizzo": "Geysir, Selfoss",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Grenivík",
+    "lat": 65.967,
+    "lng": -18.19,
+    "indirizzo": "Túngata 3, Grenivík",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Grímsey",
+    "lat": 66.533,
+    "lng": -18.017,
+    "indirizzo": "Grímsey",
+    "note": "Self-service · 24/7 — isola, raggiungibile solo via traghetto o volo"
+  },
+  {
+    "nome": "N1 Grundarfjörður",
+    "lat": 64.919,
+    "lng": -23.259,
+    "indirizzo": "Grundargata 38, Grundarfjörður",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Hafnargata",
+    "lat": 63.997,
+    "lng": -22.564,
+    "indirizzo": "Hafnargata 86, Reykjanesbær",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Háholt",
+    "lat": 64.165,
+    "lng": -21.69,
+    "indirizzo": "Háholt 11, Mosfellsbær",
+    "note": "Servizio con personale · 07:00-23:00"
+  },
+  {
+    "nome": "N1 Hellissandur",
+    "lat": 64.951,
+    "lng": -23.903,
+    "indirizzo": "Útnesvegi, Hellissandur",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Hofsós",
+    "lat": 65.897,
+    "lng": -19.41,
+    "indirizzo": "Suðurbraut 9, Hofsós",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Hólmavík",
+    "lat": 65.709,
+    "lng": -21.686,
+    "indirizzo": "Höfðatún 2, Hólmavík",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Hringbraut",
+    "lat": 64.145,
+    "lng": -21.945,
+    "indirizzo": "Hringbraut 12, Reykjavík",
+    "note": "Servizio con personale · 24/7"
+  },
+  {
+    "nome": "N1 Hrísey",
+    "lat": 66.0,
+    "lng": -18.4,
+    "indirizzo": "Hrísey",
+    "note": "Self-service · 24/7 — isola, raggiungibile solo via traghetto"
+  },
+  {
+    "nome": "N1 Húsavík",
+    "lat": 66.045,
+    "lng": -17.339,
+    "indirizzo": "Héðinsbraut 2, Húsavík",
+    "note": "Servizio con personale · 08:00-22:00"
+  },
+  {
+    "nome": "N1 Hvammstangi",
+    "lat": 65.383,
+    "lng": -20.933,
+    "indirizzo": "Strandgata 1, Hvammstangi",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Hveragerði",
+    "lat": 64.0,
+    "lng": -21.183,
+    "indirizzo": "Breiðamörk 1, Hveragerði",
+    "note": "Servizio con personale · 07:30-19:30"
+  },
+  {
+    "nome": "N1 Hvolsvöllur",
+    "lat": 63.753,
+    "lng": -20.223,
+    "indirizzo": "Austurvegur 3, Hvolsvöllur",
+    "note": "Servizio con personale · 08:00-21:00"
+  },
+  {
+    "nome": "N1 Höfn",
+    "lat": 64.251,
+    "lng": -15.21,
+    "indirizzo": "Vesturbraut 1, Höfn í Hornafirði",
+    "note": "Self-service 24/7, punto con servizio con personale allo stesso indirizzo 07:00-23:00"
+  },
+  {
+    "nome": "N1 Hörgárbraut",
+    "lat": 65.682,
+    "lng": -18.087,
+    "indirizzo": "Hörgárbraut, Akureyri",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Ísafjörður",
+    "lat": 66.075,
+    "lng": -23.134,
+    "indirizzo": "Hafnarstræti 21, Ísafjörður",
+    "note": "Servizio con personale · 07:30-22:00"
+  },
+  {
+    "nome": "N1 Kirkjubæjarklaustur",
+    "lat": 63.791,
+    "lng": -18.053,
+    "indirizzo": "Klausturvegur 29, Klaustur",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Kópasker",
+    "lat": 66.317,
+    "lng": -16.467,
+    "indirizzo": "Bakkagata 10, Kópasker",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Laugum",
+    "lat": 65.617,
+    "lng": -17.417,
+    "indirizzo": "Hólum Reykjadal, Laugum",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Laugarvatn",
+    "lat": 64.217,
+    "lng": -20.733,
+    "indirizzo": "Dalbraut 8, Laugarvatn",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Leiruvegur",
+    "lat": 65.695,
+    "lng": -18.11,
+    "indirizzo": "Leiruvegur, Akureyri",
+    "note": "Servizio con personale · 07:30-19:30"
+  },
+  {
+    "nome": "N1 Lækjargata",
+    "lat": 64.067,
+    "lng": -21.965,
+    "indirizzo": "Lækjargata 54, Hafnarfjörður",
+    "note": "Servizio con personale · 24/7"
+  },
+  {
+    "nome": "N1 Mjóafjörður",
+    "lat": 65.2,
+    "lng": -13.833,
+    "indirizzo": "Mjóafjörður",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Norðlingaholt",
+    "lat": 64.097,
+    "lng": -21.767,
+    "indirizzo": "Elliðabraut 2, Reykjavík",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Norðurfjörður",
+    "lat": 65.92,
+    "lng": -21.53,
+    "indirizzo": "Norðurfirði, Norðfjörður",
+    "note": "Self-service · 24/7 — nota: indirizzo originale riporta 'Norðfjörður', probabile refuso per Norðurfjörður (Strandir/Árneshreppur); coordinate riferite a quest'ultimo"
+  },
+  {
+    "nome": "N1 Norðurhella",
+    "lat": 64.067,
+    "lng": -21.952,
+    "indirizzo": "Norðurhella 1, Hafnarfjörður",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Ólafsvík",
+    "lat": 64.894,
+    "lng": -23.711,
+    "indirizzo": "Ólafsbraut 57, Ólafsvík",
+    "note": "Self-service 24/7, negozio allo stesso indirizzo 08:00-17:00"
+  },
+  {
+    "nome": "N1 Patreksfjörður",
+    "lat": 65.595,
+    "lng": -24.014,
+    "indirizzo": "Aðalstræti 100, Patreksfjörður",
+    "note": "Self-service 24/7, negozio 09:00-17:30"
+  },
+  {
+    "nome": "N1 Raufarhöfn",
+    "lat": 66.45,
+    "lng": -15.95,
+    "indirizzo": "Aðalbraut 26, Raufarhöfn",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Reyðarfjörður",
+    "lat": 65.033,
+    "lng": -14.183,
+    "indirizzo": "Búðargata 5, Reyðarfjörður",
+    "note": "Self-service 24/7, negozio 08:00-17:00"
+  },
+  {
+    "nome": "N1 Reykholt",
+    "lat": 64.664,
+    "lng": -21.292,
+    "indirizzo": "Reykholt",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Reykhólar",
+    "lat": 65.467,
+    "lng": -22.233,
+    "indirizzo": "Hellisbraut 72, Reykhólar",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Reykjahlíð",
+    "lat": 65.642,
+    "lng": -16.913,
+    "indirizzo": "Reykjahlíð, Mývatnssveit",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Reykjanes",
+    "lat": 65.9,
+    "lng": -22.85,
+    "indirizzo": "Ísafjarðardjúpi, Ísafjörður",
+    "note": "Self-service · 24/7 — coordinate stimate, non confondere con la penisola di Reykjanes vicino Keflavík"
+  },
+  {
+    "nome": "N1 Reykjavíkurvegur",
+    "lat": 64.07,
+    "lng": -21.955,
+    "indirizzo": "Reykjavíkurvegur 54, Hafnarfjörður",
+    "note": "Servizio con personale 07:30-19:30, officina al civico 56 08:00-17:00"
+  },
+  {
+    "nome": "N1 Sandgerði",
+    "lat": 64.03,
+    "lng": -22.7,
+    "indirizzo": "Vitatorg 5, Sandgerði",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Sauðárkrókur",
+    "lat": 65.75,
+    "lng": -19.633,
+    "indirizzo": "Ártorg 4, Sauðárkrókur",
+    "note": "Servizio con personale · 08:00-22:00"
+  },
+  {
+    "nome": "N1 Selfoss",
+    "lat": 63.933,
+    "lng": -20.997,
+    "indirizzo": "Austurvegur 48, Selfoss",
+    "note": "Servizio con personale · 07:00-23:00"
+  },
+  {
+    "nome": "N1 Skógarlind",
+    "lat": 64.083,
+    "lng": -21.833,
+    "indirizzo": "Skógarlind 2, Kópavogur",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Staðarskáli",
+    "lat": 65.078,
+    "lng": -20.97,
+    "indirizzo": "Staðarskáli, Stað",
+    "note": "Servizio con personale · 08:00-23:00"
+  },
+  {
+    "nome": "N1 Stórihjalli",
+    "lat": 64.108,
+    "lng": -21.876,
+    "indirizzo": "Stórihjalli 2, Kópavogur",
+    "note": "Servizio con personale 07:30-19:30, officina allo stesso indirizzo 08:00-17:00"
+  },
+  {
+    "nome": "N1 Stöðvarfjörður",
+    "lat": 64.817,
+    "lng": -13.86,
+    "indirizzo": "Fjarðarbraut 41, Stöðvarfjörður",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Tálknafjörður",
+    "lat": 65.617,
+    "lng": -23.967,
+    "indirizzo": "Strandgata 36, Tálknafjörður",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Tryggvabraut",
+    "lat": 65.683,
+    "lng": -18.097,
+    "indirizzo": "Tryggvabraut 12, Akureyri",
+    "note": "Self-service 24/7 (officina al civico 3, 08:00-17:00)"
+  },
+  {
+    "nome": "N1 Vestmannaeyjar",
+    "lat": 63.44,
+    "lng": -20.27,
+    "indirizzo": "Friðarhöfn, Vestmannaeyjum",
+    "note": "Self-service 24/7, servizio con personale 08:00-18:00 — raggiungibile solo via traghetto o volo"
+  },
+  {
+    "nome": "N1 Víðihlíð",
+    "lat": 65.2,
+    "lng": -20.85,
+    "indirizzo": "Víðihlíð, Hvammstangi",
+    "note": "Self-service · 24/7 — coordinate stimate"
+  },
+  {
+    "nome": "N1 Vík",
+    "lat": 63.419,
+    "lng": -19.007,
+    "indirizzo": "Austurvegi 18, Vík í Mýrdal",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Vogar",
+    "lat": 64.01,
+    "lng": -22.36,
+    "indirizzo": "Iðnadal 2, Vogar",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Vopnafjörður",
+    "lat": 65.75,
+    "lng": -14.833,
+    "indirizzo": "Kolbeinsgata 35, Vopnafjörður",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Þingeyri",
+    "lat": 65.878,
+    "lng": -23.5,
+    "indirizzo": "Sjávargata 4, Þingeyri",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Þorlákshöfn",
+    "lat": 63.85,
+    "lng": -21.367,
+    "indirizzo": "Nesbraut, Þorlákshöfn",
+    "note": "Self-service · 24/7"
+  },
+  {
+    "nome": "N1 Þórshöfn",
+    "lat": 66.2,
+    "lng": -15.333,
+    "indirizzo": "Fjarðarvegur 2, Þórshöfn",
+    "note": "Self-service · 24/7"
+  }
 ]
