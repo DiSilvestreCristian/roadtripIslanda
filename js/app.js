@@ -1,7 +1,7 @@
 // ============================================================
 // APP
 // ============================================================
-const map = L.map("map", { zoomControl: true }).setView(MAP_INITIAL_CENTER, MAP_INITIAL_ZOOM);
+const map = L.map("map", { zoomControl: false }).setView(MAP_INITIAL_CENTER, MAP_INITIAL_ZOOM);
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 18,
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -13,8 +13,6 @@ map.createPane("tappePane").style.zIndex = 500;
 map.createPane("poiPane").style.zIndex = 650;
 map.createPane("userLocationPane").style.zIndex = 700;
 
-const detailsContent = document.getElementById("details-content");
-function showDetails(html) { detailsContent.innerHTML = html; }
 function fieldRow(label, value) {
   if (value === undefined || value === null || value === "") return "";
   return `<div class="field"><span>${label}:</span> ${value}</div>`;
@@ -46,10 +44,6 @@ function haversineMeters(a, b) {
 // così possiamo riusarne nome/indirizzo/note nella descrizione di tappe coincidenti.
 function findMatchingHotel(point) {
   return hotelPoints.find((hotel) => haversineMeters(point, hotel) <= HOTEL_MATCH_DISTANCE_METERS) || null;
-}
-
-function hotelMatchesTappa(tappa) {
-  return findMatchingHotel(tappa) !== null;
 }
 
 // ============================================================
@@ -86,9 +80,9 @@ function groupTooltipLabel(group, hotel) {
   return group.tappe.map((t) => `${t.tappa}. ${t.nome}`).join(" / ");
 }
 
-// Mostra i dettagli di un gruppo di tappe coincidenti: se il punto coincide
+// HTML del popup di un gruppo di tappe coincidenti: se il punto coincide
 // con un hotel, la descrizione (nome/indirizzo/note) è quella dell'hotel.
-function showGroupDetails(group) {
+function groupDetailsHtml(group) {
   const hotel = findMatchingHotel(group);
   const blocks = group.tappe.map((tappa) => `
     <div class="detail-block">
@@ -100,7 +94,7 @@ function showGroupDetails(group) {
       ${hotel ? fieldRow("Note hotel", hotel.note) : ""}
     </div>
   `);
-  showDetails(blocks.join('<hr class="detail-sep" />'));
+  return blocks.join('<hr class="detail-sep" />');
 }
 
 function updateHotelAndTappaState() {
@@ -147,7 +141,6 @@ function addRoutingLine(tappe) {
     })
     .catch((err) => {
       console.error("Errore routing:", err);
-      showDetails(`<span style="color:#ff8080">Errore nel calcolo del percorso stradale: ${err.message}</span>`);
     });
 }
 
@@ -170,20 +163,22 @@ function loadTappe() {
           icon: makeTappaIcon(group, false),
         });
         marker.bindTooltip(groupTooltipLabel(group, null), { direction: "top" });
-        marker.on("click", () => showGroupDetails(group));
+        marker.bindPopup(groupDetailsHtml(group), { maxWidth: 300 });
         marker.addTo(tappeLayer);
         tappeMarkers.push({ marker, group });
       });
 
-      const container = document.getElementById("days-list");
-      container.innerHTML = `
-        <label class="checkbox-item">
-          <input type="checkbox" checked id="tappe-toggle" />
-          <span class="color-dot" style="background:${TAPPE_SOURCE.color}"></span>
-          Tappe
-          <span class="count">${tappeData.length}</span>
-        </label>`;
-      document.getElementById("tappe-toggle").addEventListener("change", (e) => {
+      const layersList = document.getElementById("layers-list");
+      const tappeRow = document.createElement("label");
+      tappeRow.className = "checkbox-item";
+      tappeRow.innerHTML = `
+        <input type="checkbox" checked id="tappe-toggle" />
+        <span class="color-dot" style="background:${TAPPE_SOURCE.color}"></span>
+        Tappe
+        <span class="count">${tappeData.length}</span>
+      `;
+      layersList.appendChild(tappeRow);
+      tappeRow.querySelector("input").addEventListener("change", (e) => {
         tappeVisible = e.target.checked;
         if (tappeVisible) {
           map.addLayer(tappeLayer);
@@ -199,8 +194,7 @@ function loadTappe() {
       updateHotelAndTappaState();
     })
     .catch((err) => {
-      console.error(err);
-      showDetails(`<span style="color:#ff8080">Errore caricando le tappe: ${err.message}</span>`);
+      console.error("Errore caricando le tappe:", err);
     });
 }
 
@@ -214,16 +208,26 @@ function createPoiMarker(source, p) {
     fillOpacity: 0.95,
   });
   marker.bindTooltip(p.nome, { direction: "top" });
-  marker.on("click", () => {
-    showDetails(`
-      <b>${p.nome}</b>
-      <div class="field"><span>Categoria:</span> ${source.label}</div>
-      ${fieldRow("Coordinate", `${p.lat.toFixed(4)}, ${p.lng.toFixed(4)}`)}
-      ${fieldRow("Indirizzo", p.indirizzo)}
-      ${fieldRow("Note", p.note)}
-    `);
-  });
+  marker.bindPopup(`
+    <b>${p.nome}</b>
+    <div class="field"><span>Categoria:</span> ${source.label}</div>
+    ${fieldRow("Coordinate", `${p.lat.toFixed(4)}, ${p.lng.toFixed(4)}`)}
+    ${fieldRow("Indirizzo", p.indirizzo)}
+    ${fieldRow("Note", p.note)}
+  `);
   return marker;
+}
+
+// Icona di cluster colorata secondo il colore della categoria (source.color),
+// invece dei colori di default (verde/giallo/arancio) di Leaflet.markercluster.
+function makeClusterIconCreateFunction(color) {
+  return function (cluster) {
+    return L.divIcon({
+      html: `<div class="cluster-icon" style="background:${color}">${cluster.getChildCount()}</div>`,
+      className: "poi-cluster",
+      iconSize: [36, 36],
+    });
+  };
 }
 
 function loadPoiSource(source) {
@@ -235,8 +239,13 @@ function loadPoiSource(source) {
     .then((points) => {
       poiPoints[source.id] = points;
 
-      const layer = ["benzinai", "supermercati"].includes(source.id)
-        ? L.markerClusterGroup({ pane: "poiPane", showCoverageOnHover: false, maxClusterRadius: 45 })
+      const layer = CLUSTERED_POI_IDS.includes(source.id)
+        ? L.markerClusterGroup({
+            pane: "poiPane",
+            showCoverageOnHover: false,
+            maxClusterRadius: 45,
+            iconCreateFunction: makeClusterIconCreateFunction(source.color),
+          })
         : L.layerGroup({ pane: "poiPane" });
 
       points.forEach((p) => {
@@ -261,8 +270,7 @@ function loadPoiSource(source) {
 }
 
 function buildPoiSidebar(counts) {
-  const container = document.getElementById("poi-list");
-  container.innerHTML = "";
+  const container = document.getElementById("layers-list");
   POI_SOURCES.forEach((source) => {
     const row = document.createElement("label");
     row.className = "checkbox-item";
@@ -292,6 +300,8 @@ loadTappe();
 
 // ============================================================
 // SIDEBAR — menu hamburger apribile/richiudibile
+// Il menu si chiude SOLO tramite il bottone "✕": cliccare sulla
+// mappa (per selezionare un altro marker) non lo chiude più.
 // ============================================================
 const sidebarEl = document.getElementById("sidebar");
 const sidebarToggleBtn = document.getElementById("sidebar-toggle");
@@ -301,10 +311,12 @@ const sidebarOverlay = document.getElementById("sidebar-overlay");
 function openSidebar() {
   sidebarEl.classList.add("open");
   sidebarOverlay.classList.add("visible");
+  sidebarToggleBtn.classList.add("is-hidden");
 }
 function closeSidebar() {
   sidebarEl.classList.remove("open");
   sidebarOverlay.classList.remove("visible");
+  sidebarToggleBtn.classList.remove("is-hidden");
 }
 function toggleSidebar() {
   if (sidebarEl.classList.contains("open")) closeSidebar(); else openSidebar();
@@ -312,7 +324,6 @@ function toggleSidebar() {
 
 sidebarToggleBtn.addEventListener("click", toggleSidebar);
 sidebarCloseBtn.addEventListener("click", closeSidebar);
-sidebarOverlay.addEventListener("click", closeSidebar);
 
 // Su desktop parte aperta, su smartphone parte chiusa per lasciare spazio alla mappa.
 if (window.matchMedia("(min-width: 721px)").matches) {
@@ -347,14 +358,14 @@ function toggleUserLocation() {
     return;
   }
   if (!navigator.geolocation) {
-    showDetails(`<span style="color:#ff8080">Geolocalizzazione non supportata dal browser.</span>`);
+    alert("Geolocalizzazione non supportata dal browser.");
     return;
   }
   userLocationWatchId = navigator.geolocation.watchPosition(
     (pos) => updateUserLocation(pos),
     (err) => {
       console.error(err);
-      showDetails(`<span style="color:#ff8080">Impossibile ottenere la posizione: ${err.message}</span>`);
+      alert(`Impossibile ottenere la posizione: ${err.message}`);
       stopUserLocation();
     },
     { enableHighAccuracy: true, maximumAge: 5000, timeout: 15000 }

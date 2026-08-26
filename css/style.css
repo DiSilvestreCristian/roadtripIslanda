@@ -53,6 +53,7 @@ html, body { margin: 0; height: 100%; font-family: -apple-system, BlinkMacSystem
 }
 .icon-btn:hover { background: var(--border); }
 
+/* Bottone hamburger: visibile solo a sidebar chiusa */
 .hamburger-btn {
   position: absolute;
   top: 16px;
@@ -67,19 +68,28 @@ html, body { margin: 0; height: 100%; font-family: -apple-system, BlinkMacSystem
   font-size: 1.3rem;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  transition: opacity 0.15s ease, transform 0.15s ease;
 }
 .hamburger-btn:hover { background: var(--border); }
+.hamburger-btn.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-6px);
+}
 
+/* Overlay puramente estetico: non intercetta i click, così si può
+   continuare a interagire con la mappa (marker, popup) a menu aperto.
+   Il menu si chiude SOLO tramite il bottone "✕". */
 #sidebar-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.35);
   z-index: 1050;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease;
 }
-#sidebar-overlay.visible { opacity: 1; pointer-events: auto; }
+#sidebar-overlay.visible { opacity: 1; }
 
 .panel { margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
 .panel:last-child { border-bottom: none; }
@@ -90,22 +100,19 @@ html, body { margin: 0; height: 100%; font-family: -apple-system, BlinkMacSystem
 .color-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; display: inline-block; border: 1px solid rgba(255,255,255,0.4); }
 .checkbox-item .count { margin-left: auto; color: var(--muted); font-size: 0.75rem; }
 .muted { color: var(--muted); font-size: 0.85rem; }
+.hint { margin-top: 14px; }
 
 /* ============================================================
-   DETTAGLI (pannello laterale)
-   ============================================================ */
-#details-content b { color: var(--accent); }
-#details-content .field { margin: 4px 0; font-size: 0.85rem; }
-#details-content .field span { color: var(--muted); }
-#details-content .detail-block + .detail-block { margin-top: 12px; }
-#details-content .detail-sep { border: none; border-top: 1px solid var(--border); margin: 12px 0; }
-
-/* ============================================================
-   POPUP LEAFLET
+   POPUP LEAFLET (dettagli al click sul marker)
    ============================================================ */
 .leaflet-popup-content-wrapper { background: var(--panel-bg); color: var(--text); border: 1px solid var(--border); }
 .leaflet-popup-tip { background: var(--panel-bg); }
+.leaflet-popup-content { margin: 12px 14px; min-width: 180px; }
 .leaflet-popup-content b { color: var(--accent); }
+.leaflet-popup-content .field { margin: 4px 0; font-size: 0.85rem; }
+.leaflet-popup-content .field span { color: var(--muted); }
+.leaflet-popup-content .detail-block + .detail-block { margin-top: 12px; }
+.leaflet-popup-content .detail-sep { border: none; border-top: 1px solid var(--border); margin: 12px 0; }
 
 /* ============================================================
    MARKER TAPPE (badge numerati, anche multipli)
@@ -129,6 +136,24 @@ html, body { margin: 0; height: 100%; font-family: -apple-system, BlinkMacSystem
 }
 .stop-number .badge.hotel-match { background: #2f80ed; }
 .stop-number .badge.multi { font-size: 0.72rem; }
+
+/* ============================================================
+   CLUSTER — colore coerente con la categoria del livello
+   ============================================================ */
+.poi-cluster { background: transparent; border: none; }
+.poi-cluster .cluster-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0b1120;
+  font-weight: 700;
+  font-size: 0.8rem;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
 
 /* ============================================================
    CONTROLLO "LA MIA POSIZIONE"

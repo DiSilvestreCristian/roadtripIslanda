@@ -2,10 +2,12 @@
 // CONFIGURAZIONE
 // ============================================================
 const POI_SOURCES = [
-  { id: "hotel",        file: "data/hotel.json",        label: "Hotel",        color: "#5eb1ff" },
-  { id: "benzinai",     file: "data/benzinai.json",     label: "Benzinai",     color: "#ffb454" },
-  { id: "supermercati", file: "data/supermercati.json", label: "Supermercati", color: "#7ee787" },
+  { id: "hotel",        file: "data/hotel.json",        label: "Hotel",              color: "#5eb1ff" },
+  { id: "benzinai",     file: "data/benzinai.json",     label: "Benzinai",           color: "#ffb454" },
+  { id: "supermercati", file: "data/supermercati.json", label: "Supermercati",       color: "#7ee787" },
+  { id: "poi",          file: "data/poi.json",          label: "Punti di interesse", color: "#c792ea" },
 ];
+const CLUSTERED_POI_IDS = ["benzinai", "supermercati", "poi"];
 const TAPPE_SOURCE = { file: "data/tappe.json", color: "#ff5e7d" };
 const MAP_INITIAL_CENTER = [64.9, -18.5];
 const MAP_INITIAL_ZOOM = 6;
